@@ -38,29 +38,29 @@ public class Inventories {
 			String group = (String) groups.get(i);
 			
 
-		// Check if the item has a meta value
-		if(conf.contains("groups." + group + ".item-data")) {
-			item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")), 1, (short) conf.getInt("groups." + group + ".item-data"));
-		} else {
-			item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")));
-		}
-				
-		ItemMeta itemMeta = item.getItemMeta();
-				
-		List<String> lore = new ArrayList();
-		for(String loreLine : conf.getStringList("groups." + group + ".lore")) {
-			lore.add(plugin.color(loreLine).replace("{PLAYER}", target.getName()));
-		}
-				
-		itemMeta.setLore(lore);
-		
-		
-		System.out.print(conf.getString("groups." + group + ".display-name"));
-		itemMeta.setDisplayName(plugin.color(conf.getString("groups." + group + ".display-name")));
-		
-		item.setItemMeta(itemMeta);
-		
-		inv.setItem(conf.getInt("groups." + group + ".slot"), item);
+			// Check if the item has a meta value
+			if(conf.contains("groups." + group + ".item-data")) {
+				item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")), 1, (short) conf.getInt("groups." + group + ".item-data"));
+			} else {
+				item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")));
+			}
+
+			ItemMeta itemMeta = item.getItemMeta();
+
+			List<String> lore = new ArrayList();
+			for(String loreLine : conf.getStringList("groups." + group + ".lore")) {
+				lore.add(plugin.color(loreLine).replace("{PLAYER}", target.getName()));
+			}
+
+			itemMeta.setLore(lore);
+
+
+			System.out.print(conf.getString("groups." + group + ".display-name"));
+			itemMeta.setDisplayName(plugin.color(conf.getString("groups." + group + ".display-name")));
+
+			item.setItemMeta(itemMeta);
+
+			inv.setItem(conf.getInt("groups." + group + ".slot"), item);
 
 			
 
