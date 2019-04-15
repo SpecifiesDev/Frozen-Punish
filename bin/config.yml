@@ -1,0 +1,52 @@
+############################################
+#            Frozen Punishments            #
+#			Rewritten by Specifies         #
+############################################
+
+# For assistance, refer to the github documentation.
+
+# [PlaceHolders]:
+# - {PLAYER} Repalced with the player the command is directed at.
+
+# Note, that you don't have to add commands & lore for decorations that don't require them.
+
+# The groups section is every single itemstack you want added to the GUI. 
+
+# For the moment, this plugin requires you to set the punish times in the configuration. If you wish, I can rewrite it to take input (i.e a time)
+
+# [Documentation]:
+# groups represents the list that contains keys of the items within the GUI.
+# "ban30d" & "decoration2" are starting an item stack. Anything under, is data needed for their items. 
+# In our default config, we set the names of the item to what they pertain to. You're welcome to set these to whatever.
+# In this version, you may set up to 54 items, or up to slot 53.
+
+# data:
+# item - What item do you want it to be?
+# item-data - Does this item have a meta tag we need to set? (If it doesn't, you can leave it out)
+# display-name - Display name of the itemstack.
+# lore - Stringlist containing lore for the itemstack. - denotes a new line on the lore.
+# commands - Stringlist containing commands to be ran upon clicking. - denotes a new command.
+# decorative - Is it decorative? Every item you add will REQUIRE this, to prevent an error.
+# slot - What slot do you want it placed in the inventory? Note, inventory starts at 0.
+
+# This default configuration provides two examples, of a command item, and a decoration item.
+
+# Note, that you may add duplicate item types (Two logs, etc) but do not set any item to the same slot. Will cause errors with the plugin.
+
+groups:
+    ban30d:
+      item: INK_SACK 
+      item-data: 1
+      display-name: "&cBan the Player"
+      lore:
+        - "&7Ban a player for 30days."
+      commands:
+        - "ban {PLAYER} 30d You have violated our rules."
+      decorative: false 
+      slot: 0
+    decoration2:
+      item: STAINED_GLASS_PANE
+      item-data: 7
+      display-name: "&f "
+      decorative: true
+      slot: 1

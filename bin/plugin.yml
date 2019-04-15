@@ -1,0 +1,9 @@
+name: PunishGUI
+version: 1.5
+main: me.specifies.core.Punish
+author: Specifies & Vikbor5342
+
+commands:
+  punish:
+    description: In-game GUI to punish a player.
+    usage: /punis
