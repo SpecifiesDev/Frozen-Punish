@@ -1,7 +1,5 @@
-############################################
-#            Frozen Punishments            #
-#			Rewritten by Specifies         #
-############################################
+#                  Frozen PunishmentGUI
+#                 Rewritten by Specifies
 
 # For assistance, refer to the github documentation.
 
@@ -29,7 +27,7 @@
 # decorative - Is it decorative? Every item you add will REQUIRE this, to prevent an error.
 # slot - What slot do you want it placed in the inventory? Note, inventory starts at 0.
 
-# This default configuration provides two examples, of a command item, and a decoration item.
+# This default configuration provides three examples: a command item, a single slot decoration item, and a multiple slot item.
 
 # Note, that you may add duplicate item types (Two logs, etc) but do not set any item to the same slot. Will cause errors with the plugin.
 
@@ -43,10 +41,43 @@ groups:
       commands:
         - "ban {PLAYER} 30d You have violated our rules."
       decorative: false 
-      slot: 0
-    decoration2:
+      slot: 40
+    single-decoration:
       item: STAINED_GLASS_PANE
-      item-data: 7
-      display-name: "&f "
+      item-data: 14
+      display-name: "&cMade by Specifies"
       decorative: true
-      slot: 1
+      slots: 
+        - 49
+    multi-decoration:
+      item: STAINED_GLASS_PANE
+      item-data: 5
+      display-name: "&a&m=="
+      decorative: true
+      slots: 
+        - 53
+        - 52
+        - 51
+        - 50
+        - 48
+        - 47
+        - 46
+        - 45
+ 
+# ========================================================= #
+#                     Help Command StringList               #
+#                     Customize /punish help                #
+# ========================================================= #
+
+
+help-command:
+  - "&b&m======&7[&bFrozen Punish&7]&b&m======"
+  - "&b/punish <player>"
+  - "&7Open a GUI containing punishments you can provide a player."
+  - ""
+  - "&b/punish reload"
+  - "&7Admin command to reload the punishment configuration."
+  - ""
+  - "&b/punish setdefault"
+  - "&7Admin command to set the punishment configuration to its default value."
+  - "&b&m========================="
