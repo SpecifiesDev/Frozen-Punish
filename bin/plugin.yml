@@ -13,3 +13,6 @@ commands:
   punishchat:
     description: In-game GUI to punish a player for a chat infraction.
     usage: /punishchat
+  testlite:
+    description: Remove this.
+    usage: /testlite
