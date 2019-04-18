@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.specifies.core.Beta.TestLiteBans;
 import me.specifies.core.Commands.PunishChat;
 import me.specifies.core.Commands.PunishCoreCommand;
 import me.specifies.core.Commands.PunishGame;
@@ -23,7 +24,7 @@ public class Punish extends JavaPlugin {
 		getCommand("punish").setExecutor(new PunishCoreCommand(this));
 		getCommand("punishgame").setExecutor(new PunishGame(this));
 		getCommand("punishchat").setExecutor(new PunishChat(this));
-	
+		getCommand("testlite").setExecutor(new TestLiteBans(this));
 	}
 	
 	private void registerEvents() {
