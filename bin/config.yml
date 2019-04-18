@@ -31,39 +31,248 @@
 
 # Note, that you may add duplicate item types (Two logs, etc) but do not set any item to the same slot. Will cause errors with the plugin.
 
+# ========================================================= #
+#                 Group for the command:                    #
+#                       /punish                             #
+# ========================================================= #
+
 groups:
+    punishg:
+      item: DIAMOND_SWORD
+      display-name: "&cPunish the player for a gameplay infraction."
+      lore:
+        - "&7Punishing&8: &b{PLAYER}"
+      commands:
+        - "punishgame {PLAYER}"
+      decorative: false 
+      slot: 21
+    punishc:
+      item: PAPER
+      display-name: "&cPunish the player for a chat infraction."
+      lore:
+        - "&7Punishing&8: &b{PLAYER}"
+      commands:
+        - "punishchat {PLAYER}"
+      decorative: false
+      slot: 23
+    main-decoration:
+      item: STAINED_GLASS_PANE
+      item-data: 8
+      display-name: "&f "
+      decorative: true
+      slots: 
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 19
+        - 20
+        - 22
+        - 24
+        - 25
+        - 26
+        - 27
+        - 28
+        - 29
+        - 30
+        - 31
+        - 32
+        - 33
+        - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+      
+
+# ========================================================= #
+#                 Group for the command:                    #
+#                   /punishgame                             #
+# ========================================================= #
+
+punishgame:
     ban30d:
-      item: INK_SACK 
-      item-data: 1
+      item: INK_SACK
+      item-data: 3
       display-name: "&cBan the Player"
       lore:
-        - "&7Ban a player for 30days."
+        - "&7Ban the player&8: &b{PLAYER} &7for 30 days."
       commands:
         - "ban {PLAYER} 30d You have violated our rules."
-      decorative: false 
-      slot: 40
-    single-decoration:
-      item: STAINED_GLASS_PANE
-      item-data: 14
-      display-name: "&cMade by Specifies"
+      decorative: false
+      slot: 31
+
+
+# ========================================================= #
+#                 Group for the command:                    #
+#                   /punishgame                             #
+# ========================================================= #
+
+punishchat:
+    spamintro:
+      item: STAINED_CLAY
+      display-name: "&cChat Infraction - Spamming"
+      lore:
+        - "&7This row contains infractions regarding&8: &bSpamming&7."
       decorative: true
-      slots: 
-        - 49
-    multi-decoration:
-      item: STAINED_GLASS_PANE
-      item-data: 5
-      display-name: "&a&m=="
+      slots:
+        - 0
+    spam1:
+      item: PAPER
+      display-name: "&cSpam Infraction - Level 1"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for one hour."
+      commands:
+        - "mute {PLAYER} 1h You have violated our terms. (Spamming)"
+      decorative: false
+      slot: 1
+    spam2:
+      item: PAPER
+      display-name: "&cSpam Infraction - Level 2"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for one day."
+      commands:
+        - "mute {PLAYER} 1d You have violated our terms. (Spamming)"
+      decorative: false
+      slot: 2
+    spam3:
+      item: PAPER
+      display-name: "&cSpam Infraction - Level 3"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for seven days."
+      commands:
+        - "mute {PLAYER} 7d You have violated our terms. (Spamming)"
+      decorative: false
+      slot: 3
+    spam4:
+      item: PAPER
+      display-name: "&cSpam Infraction - Level 4"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for thirty days."
+      commands:
+        - "mute {PLAYER} 30d You have violated our terms. (Spamming)"
+      decorative: false
+      slot: 4
+    spam5:
+      item: PAPER
+      display-name: "&cSpam Infraction - Level 5"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7permanently."
+      commands:
+        - "mute {PLAYER} You have been permanently muted due 5 infractions for spamming."
+      decorative: false
+      slot: 5
+    lightintro:
+      item: STAINED_CLAY
+      item-data: 8
+      display-name: "&cChat Infraction - Light Advertising"
+      lore:
+        - "&7This row contains infractions regarding&8: &bLight Advertising&7."
       decorative: true
-      slots: 
-        - 53
-        - 52
-        - 51
-        - 50
-        - 48
-        - 47
-        - 46
-        - 45
- 
+      slots:
+        - 9
+    light1:
+      item: PAPER
+      display-name: "&cLight Advertising Infraction - Level 1"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for three hours."
+      commands:
+        - "mute {PLAYER} 3h You have violated our terms. (Light Advertising)"
+      decorative: false
+      slot: 10
+    light2:
+      item: PAPER
+      display-name: "&cLight Advertising Infraction - Level 2"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for one day."
+      commands:
+        - "mute {PLAYER} 1d You have violated our terms. (Light Advertising)"
+      decorative: false
+      slot: 11
+    light3:
+      item: PAPER
+      display-name: "&cLight Advertising Infraction - Level 3"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for seven days."
+      commands:
+        - "mute {PLAYER} 7d You have violated our terms. (Light Advertising)"
+      decorative: false
+      slot: 12
+    light4:
+      item: PAPER
+      display-name: "&cLight Advertising Infraction - Level 4"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for thirty days."
+      commands:
+        - "mute {PLAYER} 30d You have violated our terms. (Light Advertising)"
+      decorative: false
+      slot: 13
+    light5:
+      item: PAPER
+      display-name: "&cLight Advertising Infraction - Level 5"
+      lore:
+        - "&7Mute the player&8: &b{PLAYER} &7for three hours."
+      commands:
+        - "mute {PLAYER} You have been permanently muted due to 5 infractions for Light Advertising."
+      decorative: false
+      slot: 14
+    advintro:
+      item: STAINED_CLAY
+      item-data: 4
+      display-name: "&cChat Infraction - Advertising"
+      lore:
+        - "&7This row contains infractions regarding&8: &bAdvertising&7."
+      decorative: true
+      slots:
+        - 18
+    adv1:
+      item: PAPER
+      display-name: "&cAdvertising Infraction - Level 1"
+      lore: 
+        - "&7Mute the player&8: &b{PLAYER} &7for fourteen days."
+      commands:
+        - "mute {PLAYER} 14d You have violated our terms. (Advertising)"
+      decorative: false
+      slot: 19
+    adv2:
+      item: PAPER
+      display-name: "&cAdvertising Infraction - Level 2"
+      lore: 
+        - "&7Mute the player&8: &b{PLAYER} &7for thirty days."
+      commands:
+        - "mute {PLAYER} 30d You have violated our terms. (Advertising)"
+      decorative: false
+      slot: 20
+    adv3:
+      item: PAPER
+      display-name: "&cAdvertising Infraction - Level 3"
+      lore: 
+        - "&7Mute the player&8: &b{PLAYER} &7permanently."
+      commands:
+        - "mute {PLAYER} You have been permanently muted due to 3 infractions for advertising."
+      decorative: false
+      slot: 21
 # ========================================================= #
 #                     Help Command StringList               #
 #                     Customize /punish help                #
@@ -80,4 +289,10 @@ help-command:
   - ""
   - "&b/punish setdefault"
   - "&7Admin command to set the punishment configuration to its default value."
+  - ""
+  - "&b/punishchat <player>"
+  - "&7Open a GUI containing chat infractions you can provide a player."
+  - ""
+  - "&b/punishgame <player>"
+  - "&7Open a GUI containing game infractions you can provide a player."
   - "&b&m========================="

@@ -7,3 +7,9 @@ commands:
   punish:
     description: In-game GUI to punish a player.
     usage: /punish
+  punishgame:
+    description: In-game GUI to punish a player for an in-game infraction.
+    usage: /punishgame
+  punishchat:
+    description: In-game GUI to punish a player for a chat infraction.
+    usage: /punishchat
