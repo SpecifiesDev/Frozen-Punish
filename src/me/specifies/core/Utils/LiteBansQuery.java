@@ -19,10 +19,10 @@ public class LiteBansQuery {
 		String query = "SELECT * FROM {bans} WHERE uuid=?";
 		
 		
-        new BukkitRunnable() {
+        	new BukkitRunnable() {
 			@Override
 			public void run() {
-                queryDatabase(query, uuid, "setTotalBans");
+                		queryDatabase(query, uuid, "setTotalBans");
 				this.cancel();
 			}
 			
