@@ -32,14 +32,36 @@ public class InventoryClick implements Listener {
 		
 		Inventory inv = e.getInventory();
 		
-		// If the inventory is the one we want to perform computation on, return
-		if(!inv.getName().contains(strip("Punish: "))) {
-			return;
+		// Main punish screen
+		if(inv.getName().contains(strip("Punish-Choice: "))) {
+			
+			loopGroup("groups", e, inv, p);
+			
+		}
+		if(inv.getName().contains(strip("Punish-Game: "))) {
+			
+			loopGroup("punishgame", e, inv, p);
 		}
 		
+		if(inv.getName().contains(strip("Punish-Chat: "))) {
+			
+			loopGroup("punishchat", e, inv, p);
+		}
+		
+	
+	}
+	
+	
+	private String strip(String m) {
+		return ChatColor.stripColor(m);
+	}
+	
+	private void loopGroup(String groupS, InventoryClickEvent e, Inventory inv, Player p) {
 		
 		// cancel the take event
 		e.setCancelled(true);
+		
+		String groupData = groupS + ".";
 		
 		// prevent NPEs
 		if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) {
@@ -56,10 +78,10 @@ public class InventoryClick implements Listener {
 		
 		FileConfiguration conf = plugin.getConfig();
 		
-		int groupsInConfig = conf.getConfigurationSection("groups").getKeys(false).size();
+		int groupsInConfig = conf.getConfigurationSection(groupS).getKeys(false).size();
 		
 		List<String> groups = new ArrayList();
-		for(String groupTag : conf.getConfigurationSection("groups").getKeys(false)) {
+		for(String groupTag : conf.getConfigurationSection(groupS).getKeys(false)) {
 			groups.add(groupTag);
 		}
 		
@@ -68,11 +90,12 @@ public class InventoryClick implements Listener {
 			String group = (String) groups.get(i);
 			
 			// Check if it's a command item essentially, and if it's one in our config.
-			if(item.getType() == Material.valueOf(conf.getString("groups." + group + ".item")) & !conf.getBoolean("groups." + group + ".decorative")) {
+
+			if(item.getType() == Material.valueOf(conf.getString(groupData + group + ".item")) & !conf.getBoolean(groupData + group + ".decorative")) {
 				p.closeInventory();
 				
 				List<String> commands = new ArrayList();
-				for(String command : conf.getStringList("groups." + group + ".commands")) {
+				for(String command : conf.getStringList(groupData + group + ".commands")) {
 					commands.add(command.replace("{PLAYER}", titleParts[1]));
 				}
 				
@@ -83,11 +106,6 @@ public class InventoryClick implements Listener {
 			}
 			
 		}
-	}
-	
-	
-	private String strip(String m) {
-		return ChatColor.stripColor(m);
 	}
 
 }

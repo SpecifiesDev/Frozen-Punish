@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 import me.specifies.core.Punish;
 import me.specifies.core.Utils.Inventories;
 
-public class PunishGame implements CommandExecutor {
+public class PunishChat implements CommandExecutor {
 	
 	Punish plugin;
-	public PunishGame(Punish instance) {
+	public PunishChat(Punish instance) {
 		this.plugin = instance;
 	}
 	
@@ -25,13 +25,13 @@ public class PunishGame implements CommandExecutor {
 		
 		Player p = (Player) sender;
 		
-		if(!p.hasPermission("punish.game")) {
+		if(!p.hasPermission("punish.chat")) {
 			p.sendMessage(plugin.color("&cYou don't have permission to execute this command."));
 			return true;
 		}
 		
 		if(args.length < 1 || args.length > 1) {
-			p.sendMessage(plugin.color("&cInvalid arguments. /punishgame <player>"));
+			p.sendMessage(plugin.color("&cInvalid arguments. /punishchat <player>"));
 			return true;
 		}
 		
@@ -46,7 +46,7 @@ public class PunishGame implements CommandExecutor {
 		
 		Inventories util = new Inventories();
 		
-		util.openGUI(p, target, plugin, "punishgame", "&7Punish-Game: &e");
+		util.openGUI(p, target, plugin, "punishchat", "&7Punish-Chat: &e");
 		
 		return true;
 	}

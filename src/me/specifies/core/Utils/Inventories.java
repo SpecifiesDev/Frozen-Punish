@@ -24,19 +24,21 @@ public class Inventories {
 	 * @param target The target of the command, the person who will receive punishment(s).
 	 * @param plugin Instance of our main class.
 	 */
-	public void openGUI(Player sender, Player target, Punish plugin) {
+	public void openGUI(Player sender, Player target, Punish plugin, String groupData, String inventoryPref) {
 		
-		// Create a new inventory with 54 slots, and the title of "Punish: playerName"
+		String groupPath = groupData + ".";
+		
+		// Create a new inventory with 43 slots, and the title of "Punish: playerName"
 		// Setting their name is essential, as in Inventory click we parse the title to get a player to punish.
-		Inventory inv = Bukkit.createInventory(null, 54, plugin.color("Punish: &e" + target.getName()));
+		Inventory inv = Bukkit.createInventory(null, 45, plugin.color(inventoryPref + target.getName()));
 		
 		// The amount of groups in the "groups" section. So we can loop throuugh and do necessary computation.
-		int groupsInConfig = plugin.getConfig().getConfigurationSection("groups").getKeys(false).size();
+		int groupsInConfig = plugin.getConfig().getConfigurationSection(groupData).getKeys(false).size();
 		
 		// This list & for loop grabs the raw string of each group in the section, so we can refer to them in the loop
 		List<String> groups = new ArrayList();
 		
-		for(String groupTag : plugin.getConfig().getConfigurationSection("groups").getKeys(false)) {
+		for(String groupTag : plugin.getConfig().getConfigurationSection(groupData).getKeys(false)) {
 			groups.add(groupTag);
 		}
 		
@@ -53,10 +55,10 @@ public class Inventories {
 			
 
 			// Check if the item has a meta value
-			if(conf.contains("groups." + group + ".item-data")) {
-				item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")), 1, (short) conf.getInt("groups." + group + ".item-data"));
+			if(conf.contains(groupPath + group + ".item-data")) {
+				item = new ItemStack(Material.valueOf(conf.getString(groupPath + group + ".item")), 1, (short) conf.getInt(groupPath + group + ".item-data"));
 			} else {
-				item = new ItemStack(Material.valueOf(conf.getString("groups." + group + ".item")));
+				item = new ItemStack(Material.valueOf(conf.getString(groupPath + group + ".item")));
 			}
 			
 			// Grab the itemMeta for manipulation.
@@ -64,26 +66,26 @@ public class Inventories {
 			
 			// Add necessary lore strings, and replace {PLAYER} with the target player.
 			List<String> lore = new ArrayList();
-			for(String loreLine : conf.getStringList("groups." + group + ".lore")) {
+			for(String loreLine : conf.getStringList(groupPath + group + ".lore")) {
 				lore.add(plugin.color(loreLine).replace("{PLAYER}", target.getName()));
 			}
 			
 			// Set meta to the item
 			itemMeta.setLore(lore);
-			itemMeta.setDisplayName(plugin.color(conf.getString("groups." + group + ".display-name")));
+			itemMeta.setDisplayName(plugin.color(conf.getString(groupPath + group + ".display-name")));
 			
 			item.setItemMeta(itemMeta);
 			
 			// Is it decorative or not?
 			// If it's decorative, we refer to "slots", for an integerList. If not, we refer to slot as we can naturally assume there will only be one copy of said item.
-			if(conf.getBoolean("groups." + group + ".decorative")) {
-				for(int slotToSet : conf.getIntegerList("groups." + group + ".slots")) {
+			if(conf.getBoolean(groupPath + group + ".decorative")) {
+				for(int slotToSet : conf.getIntegerList(groupPath + group + ".slots")) {
 					inv.setItem(slotToSet, item);
 				}
 			}
 			
-			if(!conf.getBoolean("groups." + group + ".decorative")) {
-				inv.setItem(conf.getInt("groups." + group + ".slot"), item);
+			if(!conf.getBoolean(groupPath + group + ".decorative")) {
+				inv.setItem(conf.getInt(groupPath + group + ".slot"), item);
 			}
 			
 
